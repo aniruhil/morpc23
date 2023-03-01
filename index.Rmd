@@ -12,7 +12,6 @@ output:
     seal: true
     self_contained: false
     nature:
-#      beforeInit: "https://platform.twitter.com/widgets.js"
       ratio: '16:9'
       highlightStyle: github
       highlightLines: true
@@ -119,7 +118,7 @@ xaringanExtra::use_progress_bar(
 
 ### (2) Some possibilities 
 
-### (3) Literate programming 
+### (3) Literate programming for deliverables 
 
 ---
 
@@ -151,7 +150,7 @@ knitr::include_graphics("imgs/rconsole.png")
 
 ```
 
-> [Download R from here](https://cran.r-project.org/bin/) 
+> [Download from here](https://cran.r-project.org/bin/) 
 
 ---
 
@@ -219,13 +218,14 @@ readr::read_csv(
   dplyr::filter(loc_admin_state == "OH") -> fluloc
 
 DT::datatable(
-  fluloc[, c(3:6)], 
+  fluloc[1:10, c(3, 5, 7, 10:16)], 
   caption = "Vaccines.gov: Flu vaccinating provider locations in Ohio",
+  colnames = c("Phone", "Street", "City", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"),
   extensions = 'Buttons', 
   class = "compact",
   options = list(
     scrollX = TRUE,
-    autoWidth = TRUE,
+    autoWidth = FALSE,
     pageLength = 5,
     dom = 'Bfrtip',
     buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
@@ -237,11 +237,11 @@ DT::datatable(
 
 ---
 
-## Data from the Census Bureau? 
+## Data from the Census Bureau? Hello tidycensus!
 
 .panelset[
 
-.panel[.panel-name[The Code]
+.panel[.panel-name[ The Code]
 
 ```{r tidycensus-test, echo = TRUE, results = 'hide'}
 
@@ -256,7 +256,6 @@ get_acs(
   geometry = TRUE
   ) -> frat
 
-
 get_acs(
   "tract",
   state = "39",
@@ -264,9 +263,10 @@ get_acs(
   variables = "B01001_001",
   geometry = TRUE
   ) -> oht
-
 ```
+[tidycensus](https://walker-data.com/tidycensus/)
 ]
+
 
 .panel[.panel-name[Franklin County Tracts]
 
@@ -300,6 +300,7 @@ oht %>%
   viridis::scale_fill_viridis(option = "cividis") + 
   labs(fill = "Population (in 100 persons)") 
 ```
+
 ]
 ]
 
@@ -457,14 +458,16 @@ DT::datatable(
   class = "compact",
   options = list(
     scrollX = TRUE,
-    autoWidth = TRUE,
+    autoWidth = FALSE,
     pageLength = 5
     )
-  ) 
+  ) %>% 
+  DT::formatCurrency(c('2010', '2020'), currency = "", interval = 3, mark = ",", digits = 0)
 ```
 
----
+[BEA API](https://www.bea.gov/resources/for-developers)
 
+---
 
 ## Bureau of Labor Statistics (BLS) Data
 
@@ -481,6 +484,7 @@ df <- bls_api(c("LNS14000000"),
 df %>%
   arrange(date) %>%
   select(1, 3, 4) %>%
+  mutate(value = value/100) %>%
   DT::datatable(
   .,
   caption = "Unemployment Rate, by Month and Year",
@@ -488,12 +492,15 @@ df %>%
   class = "compact",
   options = list(
     scrollX = TRUE,
-    autoWidth = TRUE,
+    autoWidth = FALSE,
     pageLength = 5
     )
-  )
+  ) %>% 
+  DT::formatPercentage("value", 1)
 
 ```
+
+[BLS API](https://www.bls.gov/developers/home.htm)
 
 ---
 
@@ -528,10 +535,11 @@ DT::datatable(
   class = "compact",
   options = list(
     scrollX = TRUE,
-    autoWidth = TRUE,
+    autoWidth = FALSE,
     pageLength = 5
     )
-  )
+  ) %>%
+  DT::formatCurrency(c('Value'), currency = "", interval = 3, mark = ",", digits = 0)
 
 ```
 
@@ -540,6 +548,18 @@ Source: [Kyle Walker](https://walker-data.com/census-r/other-census-and-governme
 ---
 
 ### Longitudinal and Employer-Household Dynamics (LEHD) Origin-Destination Employment Statistics (LODES) data
+
+.panelset[
+
+.panel[
+.panel-name[LEHD/LODES]
+
+> [LEHD](https://lehd.ces.census.gov/data/) makes available several data products that may be used to research and characterize workforce dynamics for specific groups. ... The Quarterly Workforce Indicators (QWI), LEHD Origin-Destination Employment Statistics (LODES), Job-to-Job Flows (J2J), and Post-Secondary Employment Outcomes (PSEO) are available online for public use. Confidential microdata are available too.
+
+]
+
+.panel[
+.panel-name[Microsoft Commuters]
 
 ```{r, include=FALSE}
 library(lehdr)
@@ -575,18 +595,20 @@ ms_commuters <- seattle_adults %>%
   erase_water(area_threshold = 0.99)
 ```
 
-```{r, out.width = "60%"}
+```{r, out.width = "45%"}
 ggplot(ms_commuters, aes(fill = ms_per_1000)) + 
-  geom_sf(color = NA) + 
+  geom_sf(color = "lightgrey") + 
   theme_void() + 
-  scale_fill_viridis_c(option = "cividis") + 
+  scale_fill_viridis_c(option = "cividis", direction = 1) + 
   labs(title = "Microsoft commuters per 1000 adults",
        subtitle = "2019 LODES data, Seattle-area counties",
        fill = "Rate per 1000")
-
 ```
 
-Source: [Kyle Walker](https://walker-data.com/census-r/other-census-and-government-data-resources.html#analyzing-labor-markets-with-lehdr)
+Source: [Kyle Walker](https://walker-data.com/census-r/other-census-and-government-data-resources.html#analyzing-labor-markets-with-lehdr) but see also [Hannah Arecht's censusapi package](https://www.hrecht.com/censusapi/)
+
+]
+]
 
 ---
 
@@ -616,7 +638,7 @@ leaflet() %>%
 
 class: inverse, center
 
-## Interactive graphics with [highcharter]()
+## Interactive graphics with [highcharter](https://jkunst.com/highcharter/)
 
 ```{r hc01}
 
@@ -691,6 +713,14 @@ class: inverse, center,
 <img src = "https://github.com/spren9er/tidytuesday/blob/master/images/tidytuesday_201946_cran_packages.png?raw=true" width = "35%" height = "35%">
 ]
 
+.panel[
+.panel-name[The art commune ...]
+
+<img src = "https://github.com/rfordatascience/tidytuesday/raw/master/static/tt_logo.png" width = "45%" height = "45%">
+
+[mark your calendar!](https://github.com/rfordatascience/tidytuesday)
+
+]
 ]
 
 ---
@@ -699,7 +729,7 @@ class: inverse, center, middle
 background-image: url(imgs/kelly-sikkema-450720-unsplash.jpg)
 background-size: cover
 
-.large[ .fat[ Literate programming ] ]
+.large[ .fat[ Literate programming for deliverables ] ]
 
 ---
 
@@ -756,29 +786,39 @@ Source: giphy.com
 
 ![](https://pkgs.rstudio.com/flexdashboard/reference/figures/logo.png)
 
-Source: [https://pkgs.rstudio.com/flexdashboard/](https://pkgs.rstudio.com/flexdashboard/)
+[flexdashboard source:](https://pkgs.rstudio.com/flexdashboard/)
 ]
 
 .panel[
 .panel-name[Shiny dashboards]
 
-[An Example: The OMAS Dashboard](https://grcapps.osu.edu/app/omas) 
+[Example #1: The OMAS Dashboard](https://grcapps.osu.edu/app/omas) 
 
-Source: [https://shiny.rstudio.com/](https://shiny.rstudio.com/)
+[Example #2: The New Zealand's International Trade](https://statisticsnz.shinyapps.io/trade_dashboard/) 
+
+[Shiny source:](https://shiny.rstudio.com/)
 
 ]
-
 ]
 
 ---
 
-class: inverse, left, middle
 
-.large[ .salt[ What could we do better? ] ]
+## More utility items
 
-### + More open data 
-### + Shared learning community (Slack? Teams)
-### + Other ideas? 
+.pull-left[
+[Exploratory](https://exploratory.io/) 
+
+<img src = "https://exploratory.io/media/what-exploratory-does.png#cb=1677482184064" width = "75%" height = "75%">
+]
+
+.pull-right[
+[The Rocker Project](https://rocker-project.org/)
+
+<img src = "https://rocker-project.org/img/rocker.png" width = "45%" height = "45%">
+]
+
+... and, of course, both [github](https://github.com/) and [gitlab](https://gitlab.com)
 
 ---
 
@@ -788,8 +828,7 @@ class: middle, left
 
 1. Images not rendered by me are sourced from Unsplash. Artists whose works are used in this slide-deck are: [Brooke Lark](https://unsplash.com/@brookelark), [Liana Mikah](https://unsplash.com/@lianamikah), [Biran Suman](https://unsplash.com/@briansuman), and [Gaelle Marcel](https://unsplash.com/@gaellemarcel)
 
-2. It would be only fair to say that all [xaringan](https://github.com/yihui/xaringan) I know is due to [Yihui Xie](https://yihui.org/), [Alison Presmanes-Hill](https://github.com/apreshill), and [Garrick Aden-Buie](https://github.com/gadenbuie) who have built and flexed what is possible with `{xaringan}`
-
+2. It would be only fair to say that all [xaringan](https://github.com/yihui/xaringan) I know is due to [Yihui Xie](https://yihui.org/), [Alison Presmanes-Hill](https://github.com/apreshill), and [Garrick Aden-Buie](https://github.com/gadenbuie) who have built and flexed what is possible with `{xaringan}` 
 
 ---
 
