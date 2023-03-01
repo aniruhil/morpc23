@@ -151,7 +151,7 @@ knitr::include_graphics("imgs/rconsole.png")
 
 ```
 
-> [download R from here](https://cran.r-project.org/bin/) 
+> [Download R from here](https://cran.r-project.org/bin/) 
 
 ---
 
@@ -167,7 +167,7 @@ knitr::include_graphics("imgs/jupyterlab.png")
 ]
 
 .panel[.panel-name[VSCode] 
-```{r, out.width = "50%"}
+```{r, out.width = "60%"}
 knitr::include_graphics("imgs/vscode.png")
 ```
 [Download from here](https://code.visualstudio.com/download)
