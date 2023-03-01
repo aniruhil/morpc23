@@ -1,0 +1,33 @@
+/*-- scss:defaults --*/
+
+// fonts
+/*$font-family-sans-serif: 'Atkinson Hyperlegible', sans-serif !default;
+$font-family-sans-serif: Montserrat, serif !default; */
+$font-family-sans-serif: 'Lato', sans-serif !default;
+$font-family-mono: 'Source Code Pro', mono !default;
+
+// colors
+$body-bg: #ffffff !default;
+$body-color: #000 !default;
+$link-color: #51483d !default;
+$selection-bg: #e1341e !default;
+$link-color-hover:	lighten($link-color, 15%) !default;
+$selection-bg: lighten($link-color, 25%) !default;
+
+// headings
+$presentation-heading-font: "Poppins", Poppins, sans-serif !default;
+$presentation-heading-color: #1a1917 !default;
+$presentation-h1-text-shadow:	none !default;
+$presentation-heading-font-weight: 700 !default;
+$presentation-h1-font-size: 2.5em !default;
+$presentation-h2-font-size: 2.0em !default;
+$presentation-h3-font-size: 1.5em !default;
+$presentation-h4-font-size: 1em !default;
+
+$presentation-font-size-root: 50px !default;
+$presentation-font-smaller: 0.7 !default;
+/*-- scss:rules --*/
+
+.reveal a {
+  line-height: 1.3em;
+}

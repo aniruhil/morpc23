@@ -1,0 +1,24 @@
+.remark-slide-content:after {
+  content: "";
+  position: absolute;
+/*  bottom: 5px;
+  right: 35px;
+  height: 40px;
+  width: 120px; */
+  bottom: 15px;
+  left: 20px;
+  height: 30px;
+  width: 150%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("gvslogo.png");
+}
+
+.remark-inline-code{
+  /* background: #F5F5F5;*/ /* lighter */
+  background: #e7e8e2; /* darker */
+  /*border-radius: 5px;*/
+  /* border-radius: 15px 50px; */
+  border-radius: 25px 25px;
+  padding: 2px;
+}
