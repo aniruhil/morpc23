@@ -861,4 +861,3 @@ pagedown::chrome_print("GVSAcademy_august2021.html")
 
 ```
 
-
