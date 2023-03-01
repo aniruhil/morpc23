@@ -231,7 +231,7 @@ DT::datatable(
     buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
     )
   ) %>%
-  DT::formatStyle(columns = c(1:19), fontSize = '50%')
+  DT::formatStyle(columns = c(1:19), fontSize = '60%')
 
 ```
 
@@ -804,6 +804,87 @@ Source: giphy.com
 
 ---
 
+## Let us not forget tables!!
+
+```{r}
+
+library(tidyverse)
+library(gt)
+library(paletteer)
+
+sza %>%
+  filter(latitude == 20) %>%
+  select(-latitude) %>%
+  filter(!is.na(sza)) %>%
+  spread(key = "tst", value = sza) %>%
+  gt(rowname_col = "month") %>%
+  sub_missing(
+    columns = TRUE,
+    missing_text = ""
+  ) %>%
+  tab_stubhead(label = html("Month")) %>%
+  tab_header(
+    title = html("&#x2600; Solar Zenith Angles &#x2600;"),
+    subtitle = html("(20&deg;N)")
+    ) %>%
+  tab_options(
+    heading.title.font.size = px(22),
+    column_labels.font.size = px(16),
+    stub.font.size = "medium",
+    table.font.size = "smaller",
+    data_row.padding = px(3)
+  ) -> mytab01
+
+mytab01[["_data"]][, c(2:15)] -> dtvals
+colnames(dtvals) -> myvars  
+suffrager::suf_palette("london", 12, type = "continuous") -> mycolors
+
+mytab01 %>%
+  tab_options(
+    heading.background.color = "#f4f4f4",
+    column_labels.background.color = "#f4f4f4",
+    column_labels.font.weight = "bold",
+    stub.background.color = "#f4f4f4",
+    stub.font.weight = "bold"
+  ) %>%
+  data_color(
+    columns = vars(myvars),
+    color = mycolors %>%
+      as.character()
+      ) %>% 
+  tab_style(
+    style = list(
+      cell_borders(
+        sides = "left",
+        color = "white",
+        weight = px(6)
+      )
+    ),
+    locations = list(
+      cells_body(
+        columns = vars('0530')
+      )
+    )
+  ) %>%
+  tab_style(
+    style = list(
+      cell_borders(
+        sides = "bottom",
+        color = "white",
+        weight = px(6)
+      )
+    ),
+    locations = list(
+      cells_column_labels(
+        columns = gt::everything()
+      )
+    )
+  )
+
+```
+
+
+---
 
 ## More utility items
 
@@ -827,11 +908,28 @@ class: middle, left
 
 .large[ Credits ... ] 
 
-1. Images not rendered by me are sourced from Unsplash. Artists whose works are used in this slide-deck are: [Brooke Lark](https://unsplash.com/@brookelark), [Liana Mikah](https://unsplash.com/@lianamikah), [Biran Suman](https://unsplash.com/@briansuman), and [Gaelle Marcel](https://unsplash.com/@gaellemarcel)
++ Images not rendered by me are sourced from Unsplash. Artists whose works are used in this slide-deck are: [Brooke Lark](https://unsplash.com/@brookelark), [Liana Mikah](https://unsplash.com/@lianamikah), [Biran Suman](https://unsplash.com/@briansuman), and [Gaelle Marcel](https://unsplash.com/@gaellemarcel)
 
-2. It would be only fair to say that all [xaringan](https://github.com/yihui/xaringan) I know is due to [Yihui Xie](https://yihui.org/), [Alison Presmanes-Hill](https://github.com/apreshill), and [Garrick Aden-Buie](https://github.com/gadenbuie) who have built and flexed what is possible with `{xaringan}` 
++ It would be only fair to say that all [xaringan](https://github.com/yihui/xaringan) I know is due to [Yihui Xie](https://yihui.org/), [Alison Presmanes-Hill](https://github.com/apreshill), and [Garrick Aden-Buie](https://github.com/gadenbuie) who have built and flexed what is possible with `{xaringan}` 
 
-3. There are very likely many R programmers/users I have forgotten to thank but they have taught me much, always. 
++ Other table packages: **knitr** ([GITHUB](https://github.com/yihui/knitr), [WEBSITE](https://yihui.org/knitr/)) | 
+  **kableExtra** ([GITHUB](https://github.com/haozhu233/kableExtra), [WEBSITE](https://haozhu233.github.io/kableExtra/)) | 
+  **formattable** ([GITHUB](https://github.com/renkun-ken/formattable), [WEBSITE](https://renkun-ken.github.io/formattable/)) | 
+  **DT** ([GITHUB](https://github.com/rstudio/DT), [WEBSITE](https://rstudio.github.io/DT/)) | 
+  **pander** ([GITHUB](https://github.com/Rapporter/pander), [WEBSITE](http://rapporter.github.io/pander/)) | 
+  **huxtable** ([GITHUB](https://github.com/hughjonesd/huxtable), [WEBSITE](https://hughjonesd.github.io/huxtable/)) | 
+  **reactable** ([GITHUB](https://github.com/glin/reactable), [WEBSITE](https://glin.github.io/reactable/)) | 
+  **flextable** ([GITHUB](https://github.com/davidgohel/flextable), [WEBSITE](https://davidgohel.github.io/flextable/)) | 
+  **ftextra** ([GITHUB](https://github.com/atusy/ftExtra), [WEBSITE](https://ftextra.atusy.net/)) | 
+  **pixiedust** ([GITHUB](https://github.com/nutterb/pixiedust)) | 
+  **tangram** ([GITHUB](https://github.com/spgarbet/tangram)) |
+  **ztable** ([GITHUB](https://github.com/cardiomoon/ztable)) |
+  **condformat** ([GITHUB](https://github.com/zeehio/condformat)) |
+  **stargazer** ([CRAN](https://CRAN.R-project.org/package=stargazer)) |
+  **xtable** ([CRAN](https://CRAN.R-project.org/package=xtable)) 
+
+
++ There are very likely many R programmers/users I have forgotten to thank but I no less indebted to them. 
 
 ---
 
