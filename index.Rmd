@@ -211,10 +211,6 @@ background-size: cover
 
 ## Getting data ...
 
-.panelset[
-
-.panel[.panel-name[Uncompressed Data]
-
 ```{r uncompressed-csv-data}
 
 readr::read_csv(
@@ -225,7 +221,8 @@ readr::read_csv(
 DT::datatable(
   fluloc[, c(3:6)], 
   caption = "Vaccines.gov: Flu vaccinating provider locations in Ohio",
-    extensions = 'Buttons', 
+  extensions = 'Buttons', 
+  class = "compact",
   options = list(
     autoWidth = TRUE,
     pageLength = 5,
@@ -235,41 +232,7 @@ DT::datatable(
   )
 
 ```
-]
 
-.panel[.panel-name[Compressed Data]
-
-```{r compressed-data}
-
-mytmp <- tempfile()
-
-download.file(
-  "https://www.cdc.gov/brfss/annual_data/2021/files/LLCP2021XPT.zip",
-  mytmp, 
-  mode = "wb"
-  )
-
-haven::read_xpt(
-  unzip(
-    mytmp, 
-    "LLCP2021.XPT "
-    )
-  ) -> brfss21
-
-unlink(mytmp)
-
-DT::datatable(
-  brfss21[1:10, 1:6], 
-  caption = "2021 BRFSS Data",
-  options = list(
-    autoWidth = TRUE,
-    pageLength = 5
-    )
-  )
-
-```
-]
-]
 
 ---
 
