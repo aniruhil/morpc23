@@ -230,7 +230,8 @@ DT::datatable(
     dom = 'Bfrtip',
     buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
     )
-  )
+  ) %>%
+  DT::formatStyle(columns = c(1:19), fontSize = '50%')
 
 ```
 
