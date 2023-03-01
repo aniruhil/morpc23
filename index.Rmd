@@ -224,6 +224,7 @@ DT::datatable(
   extensions = 'Buttons', 
   class = "compact",
   options = list(
+    scrollX = TRUE,
     autoWidth = TRUE,
     pageLength = 5,
     dom = 'Bfrtip',
@@ -455,6 +456,7 @@ DT::datatable(
   caption = "Total Employment (number of jobs) in 2010 versus 2020",
   class = "compact",
   options = list(
+    scrollX = TRUE,
     autoWidth = TRUE,
     pageLength = 5
     )
@@ -485,6 +487,7 @@ df %>%
   colnames = c("Year", "Month", "Unemployment Rate"),
   class = "compact",
   options = list(
+    scrollX = TRUE,
     autoWidth = TRUE,
     pageLength = 5
     )
@@ -524,6 +527,7 @@ DT::datatable(
   caption = "Top 20 counties in terms of total acres with harvested cucumbers",
   class = "compact",
   options = list(
+    scrollX = TRUE,
     autoWidth = TRUE,
     pageLength = 5
     )
