@@ -910,19 +910,19 @@ class: middle, left
 
 + It would be only fair to say that all [xaringan](https://github.com/yihui/xaringan) I know is due to [Yihui Xie](https://yihui.org/), [Alison Presmanes-Hill](https://github.com/apreshill), and [Garrick Aden-Buie](https://github.com/gadenbuie) who have built and flexed what is possible with `{xaringan}` 
 
-+ Other table packages: **knitr** ([GITHUB](https://github.com/yihui/knitr), [WEBSITE](https://yihui.org/knitr/)) | 
-  **kableExtra** ([GITHUB](https://github.com/haozhu233/kableExtra), [WEBSITE](https://haozhu233.github.io/kableExtra/)) | 
-  **formattable** ([GITHUB](https://github.com/renkun-ken/formattable), [WEBSITE](https://renkun-ken.github.io/formattable/)) | 
-  **DT** ([GITHUB](https://github.com/rstudio/DT), [WEBSITE](https://rstudio.github.io/DT/)) | 
-  **pander** ([GITHUB](https://github.com/Rapporter/pander), [WEBSITE](http://rapporter.github.io/pander/)) | 
-  **huxtable** ([GITHUB](https://github.com/hughjonesd/huxtable), [WEBSITE](https://hughjonesd.github.io/huxtable/)) | 
-  **reactable** ([GITHUB](https://github.com/glin/reactable), [WEBSITE](https://glin.github.io/reactable/)) | 
-  **flextable** ([GITHUB](https://github.com/davidgohel/flextable), [WEBSITE](https://davidgohel.github.io/flextable/)) | 
-  **ftextra** ([GITHUB](https://github.com/atusy/ftExtra), [WEBSITE](https://ftextra.atusy.net/)) | 
-  **pixiedust** ([GITHUB](https://github.com/nutterb/pixiedust)) | 
-  **tangram** ([GITHUB](https://github.com/spgarbet/tangram)) |
-  **ztable** ([GITHUB](https://github.com/cardiomoon/ztable)) |
-  **condformat** ([GITHUB](https://github.com/zeehio/condformat)) |
++ Other table packages: **knitr** ([`r fa(name = "github")`](https://github.com/yihui/knitr), [`r fa(name = "globe")`](https://yihui.org/knitr/)) | 
+  **kableExtra** ([`r fa(name = "github")`](https://github.com/haozhu233/kableExtra), [`r fa(name = "globe")`](https://haozhu233.github.io/kableExtra/)) | 
+  **formattable** ([`r fa(name = "github")`](https://github.com/renkun-ken/formattable), [`r fa(name = "globe")`](https://renkun-ken.github.io/formattable/)) | 
+  **DT** ([`r fa(name = "github")`](https://github.com/rstudio/DT), [`r fa(name = "globe")`](https://rstudio.github.io/DT/)) | 
+  **pander** ([`r fa(name = "github")`](https://github.com/Rapporter/pander), [`r fa(name = "globe")`](http://rapporter.github.io/pander/)) | 
+  **huxtable** ([`r fa(name = "github")`](https://github.com/hughjonesd/huxtable), [`r fa(name = "globe")`](https://hughjonesd.github.io/huxtable/)) | 
+  **reactable** ([`r fa(name = "github")`](https://github.com/glin/reactable), [`r fa(name = "globe")`](https://glin.github.io/reactable/)) | 
+  **flextable** ([`r fa(name = "github")`](https://github.com/davidgohel/flextable), [`r fa(name = "globe")`](https://davidgohel.github.io/flextable/)) | 
+  **ftextra** ([`r fa(name = "github")`](https://github.com/atusy/ftExtra), [`r fa(name = "globe")`](https://ftextra.atusy.net/)) | 
+  **pixiedust** ([`r fa(name = "github")`](https://github.com/nutterb/pixiedust)) | 
+  **tangram** ([`r fa(name = "github")`](https://github.com/spgarbet/tangram)) |
+  **ztable** ([`r fa(name = "github")`](https://github.com/cardiomoon/ztable)) |
+  **condformat** ([`r fa(name = "github")`](https://github.com/zeehio/condformat)) |
   **stargazer** ([CRAN](https://CRAN.R-project.org/package=stargazer)) |
   **xtable** ([CRAN](https://CRAN.R-project.org/package=xtable)) 
 
@@ -931,7 +931,7 @@ class: middle, left
 
 ---
 
-class: middle, right
+class: middle, left
 
 ```{r, out.width="50%"}
 knitr::include_graphics("imgs/THanks.gif")
@@ -944,9 +944,10 @@ knitr::include_graphics("imgs/THanks.gif")
 library(fontawesome)
 ```
 
-[`r fa(name = "twitter")` @aruhil](http://twitter.com/aruhil)  
 [`r fa(name = "link")` https://aniruhil.org](https://aniruhil.org)  
-[`r fa(name = "paper-plane")` ruhil@ohio.edu](mailto:ruhil@ohio.edu)
+[`r fa(name = "paper-plane")` ruhil@ohio.edu](mailto:ruhil@ohio.edu)  
+[`r fa(name = "github")` @aniruhil](http://github.com/aniruhil)  
+[`r fa(name = "twitter")` @aruhil](http://twitter.com/aruhil)  
 
 ```{r, eval=FALSE}
 library(webshot)
