@@ -1,28 +1,30 @@
 @import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://fonts.googleapis.com/css?family=Poppins);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
 @import url(https://fonts.googleapis.com/css?family=Mukta);
 @import url(https://fonts.googleapis.com/css?family=Muli:600,700,800);
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:400');
 @import url('https://fonts.googleapis.com/css?family=Cormorant+Upright:700');
 
 body {
-  font-family: Lato, 'Palatino Linotype', 'Book Antiqua', Mukta, 'Microsoft YaHei', 'Songti SC', sans-serif;
+  font-family: Lato, Poppins, 'Palatino Linotype', 'Book Antiqua', Mukta, 'Microsoft YaHei', 'Songti SC', sans-serif;
 }
 
 h1, h2, h3 {
-  font-family: 'Muli';
-  font-weight: 600;
+  font-family: 'Poppins';
+  font-weight: 300;
 }
 
 .inverse h1 {
-  font-family: 'Muli';
-  font-weight: 800;
+  font-family: 'Poppins';
+  font-weight: 400;
   font-size: 2.5em;
 }
 
 .remark-code, .remark-inline-code {
-  font-family: 'Inconsolata', 'Lucida Console', 'Mukta', monospace;
+  font-family: 'Inconsolata', 'Ubuntu', 'Mukta', monospace;
 /*  font-size: 18px; */
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .fancy{

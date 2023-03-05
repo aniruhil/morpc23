@@ -41,14 +41,14 @@ library(tidyverse)
 library(kableExtra)
 library(formattable)
 library(here)
-library(hrbragg)
+#library(hrbragg)
 
 options(htmltools.dir.version = FALSE)
 
 knitr::opts_chunk$set(
   echo = FALSE, warning = FALSE, message = FALSE, 
   dpi = 300, cache = TRUE, tidy = FALSE, fig.align = "center", 
-  fig.width = 9, fig.height = 6, out.width = "100%", dev = "ragg_png"
+  fig.width = 9, fig.height = 6, out.width = "100%", dev = "png"
   )
 
 knitr::write_bib(c("knitr", "stringr"), "", width = 60)
@@ -112,13 +112,13 @@ xaringanExtra::use_progress_bar(
 ```
 
 
-## Agenda for the day
+### Agenda for the day
 
-### (1) A quick tour of R and IDEs 
+#### (1) A quick tour of R and some popular IDEs 
 
-### (2) Some possibilities 
+#### (2) Some possibilities 
 
-### (3) Literate programming for deliverables 
+#### (3) Literate programming for deliverables 
 
 ---
 
@@ -190,7 +190,7 @@ knitr::include_graphics("imgs/rstudio13.png")
 
 ---
 
-### Inside RStudio Desktop
+#### .heat[Inside the RStudio Desktop ...]
 
 ```{r, out.width = "50%"}
 knitr::include_graphics("imgs/cchaplin.gif")
@@ -208,7 +208,7 @@ background-size: cover
 
 ---
 
-## Getting data ...
+### Getting data ...
 
 ```{r uncompressed-csv-data}
 
@@ -235,10 +235,9 @@ DT::datatable(
 
 ```
 
-
 ---
 
-## Data from the Census Bureau? Hello tidycensus!
+### Hello tidycensus!
 
 .panelset[
 
@@ -307,7 +306,7 @@ oht %>%
 
 ---
 
-## Bureau of Economic Analysis (BEA) data?
+### Bureau of Economic Analysis (BEA) data?
 
 ```{r, include = FALSE}
 
@@ -470,7 +469,7 @@ DT::datatable(
 
 ---
 
-## Bureau of Labor Statistics (BLS) Data
+### Bureau of Labor Statistics (BLS) Data
 
 ```{r}
 library(blscrapeR)
@@ -505,7 +504,7 @@ df %>%
 
 ---
 
-## USDA Data. Cucumbers, anyone? 
+### USDA Data. Cucumbers, anyone? 
 
 ```{r}
 library(tidyUSDA)
@@ -621,7 +620,7 @@ background-size: cover
 
 ---
 
-## [A leaflet map](https://rstudio.github.io/leaflet/) 
+### [A leaflet map](https://rstudio.github.io/leaflet/) 
 
 ```{r leaflet-test}
   
@@ -639,7 +638,7 @@ leaflet() %>%
 
 class: inverse, center
 
-## Interactive graphics with [highcharter](https://jkunst.com/highcharter/)
+### Interactive graphics with [highcharter](https://jkunst.com/highcharter/)
 
 ```{r hc01}
 
@@ -694,7 +693,7 @@ hchart(
 
 class: inverse, center, 
 
-## Masters at work 
+### Masters at work 
 
 .panelset[
 
@@ -734,7 +733,7 @@ background-size: cover
 
 ---
 
-## How does R promote literate programming?  
+### How does R promote literate programming?  
 
 + Began with Friedrich Leisch's `sweave` that combined R code & LaTeX 
 
@@ -750,7 +749,7 @@ background-size: cover
 
 ---
 
-## HTML, PDF, and MS Word documents 
+### HTML, PDF, and MS Word documents 
 
 ```{r, out.width = "50%"}
 knitr::include_graphics("imgs/cchaplin.gif")
@@ -760,7 +759,7 @@ Source: giphy.com
 
 ---
 
-## Books, websites, reports, presentations, and more ...
+### Books, websites, reports, presentations, and more ...
 
 .panelset[
 
@@ -804,7 +803,7 @@ Source: giphy.com
 
 ---
 
-## Let us not forget tables!!
+### Let us not forget tables!!
 
 ```{r}
 
@@ -886,7 +885,7 @@ mytab01 %>%
 
 ---
 
-## More utility items
+### More utility items
 
 .pull-left[
 [Exploratory](https://exploratory.io/) 
